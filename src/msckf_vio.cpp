@@ -68,7 +68,7 @@ bool MsckfVio::loadParameters()
 
     nh.param<bool>("publish_tf", publish_tf, true);
     nh.param<double>("frame_rate", frame_rate, 40.0);
-    // 用于判断状态是否发散
+    // 用于判断状态是否发散 based on state covariance
     nh.param<double>("position_std_threshold", position_std_threshold, 8.0);
 
     // 判断是否删除状态
@@ -691,7 +691,7 @@ void MsckfVio::processModel(
     // 4. 四阶龙格库塔积分预测状态
     predictNewState(dtime, gyro, acc);
 
-    // 5. Observability-constrained VINS 可观性约束
+    // TODO: 5. Observability-constrained VINS 可观性约束
     // Modify the transition matrix
     // 5.1 修改phi_11
     // imu_state.orientation_null为上一个imu数据递推后保存的
