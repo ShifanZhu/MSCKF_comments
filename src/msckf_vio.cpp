@@ -1321,8 +1321,8 @@ void MsckfVio::featureJacobian(
         stack_cntr += 4;
     }
 
-    // Project the residual and Jacobians onto the nullspace
     // of H_fj.
+    // Project the residual and Jacobians onto the nullspace
     // 零空间投影
     JacobiSVD<MatrixXd> svd_helper(H_fj, ComputeFullU | ComputeThinV);
     MatrixXd A = svd_helper.matrixU().rightCols(
